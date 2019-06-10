@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./images/logo.svg";
+import { MainWindow } from "./main-window";
+import { MainTabControl, MainTabItem } from "./main-tab-control";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainWindow icon={logo} title="App Demo">
+      <MainTabControl>
+        <MainTabItem header="Tab-A">Content - A</MainTabItem>
+        <MainTabItem header="Tab-B">Content - B</MainTabItem>
+        <MainTabItem header="Tab-C">Content - C</MainTabItem>
+      </MainTabControl>
+    </MainWindow>
   );
 }
 

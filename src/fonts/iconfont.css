@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("iconfont.ttf") format("truetype"); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-restore:before {
+  content: "\e61e";
+}
+
+.icon-close:before {
+  content: "\e65e";
+}
+
+.icon-maximize:before {
+  content: "\e604";
+}
+
+.icon-minimize:before {
+  content: "\e692";
+}
