@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Window = styled.div`
   margin: 0;
@@ -24,18 +24,24 @@ export const WindowTitleBarIcon = styled.img`
 `;
 
 export const WindowTitleBarTitle = styled.span`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const WindowCommandButton = styled.button`
   width: 48px;
   height: 36px;
+  margin: 0 2px;
   border-width: 0;
   color: white;
   background: transparent;
   cursor: pointer;
   &.close&:hover {
     background: red;
+  }
+  &:hover {
+    background: #2b3852;
   }
 `;
 
