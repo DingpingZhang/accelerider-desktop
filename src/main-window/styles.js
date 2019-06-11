@@ -32,7 +32,7 @@ export const WindowTitleBarTitle = styled.span`
 export const WindowCommandButton = styled.button`
   width: 48px;
   height: 36px;
-  margin: 0 2px;
+  margin: 0 0 0 4px;
   border-width: 0;
   color: white;
   background: transparent;
