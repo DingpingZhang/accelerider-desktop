@@ -37,10 +37,17 @@ export const WindowCommandButton = styled.button`
   color: white;
   background: transparent;
   cursor: pointer;
+  outline: none;
   &.close&:hover {
     background: red;
   }
+  &.close&:active {
+    background: #ff000088;
+  }
   &:hover {
+    background: #2b385288;
+  }
+  &:active {
     background: #2b3852;
   }
 `;
