@@ -19,15 +19,6 @@ export const MainTabHeaderItemWrapper = styled.div`
   }
 `;
 
-export const MainTabHeaderDecorativeLine = styled.div`
-  width: 4px;
-  height: 52px;
-  background: transparent;
-  &.selected {
-    background: #9fa4fe;
-  }
-`;
-
 export const MainTabHeaderContent = styled.div`
   display: flex;
   align-items: center;

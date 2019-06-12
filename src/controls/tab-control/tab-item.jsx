@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function TabItem() {
-  return <div>{this.props.children}</div>;
+export function TabItem(props) {
+  return <div>{props.children}</div>;
 }
 
 TabItem.propTypes = {
