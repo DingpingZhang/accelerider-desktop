@@ -3,6 +3,7 @@ import logo from './images/logo.svg';
 import { MainWindow } from './main-window';
 import { TabControl, TabItem } from './controls/tab-control';
 import { MainTabHeaderItem } from './main-tab-header-item';
+import { FileExplorerTabItem } from './file-explorer-tab-item';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
           <MainTabHeaderItem isSelected={isSelected}>{data}</MainTabHeaderItem>
         )}
       >
-        <TabItem header="Tab-A">Content - A</TabItem>
+        <TabItem header="Tab-A">
+          <FileExplorerTabItem />
+        </TabItem>
         <TabItem header="Tab-B">Content - B</TabItem>
         <TabItem header="Tab-C">Content - C</TabItem>
       </TabControl>
