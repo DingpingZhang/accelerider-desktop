@@ -12,7 +12,7 @@ export function ListBox(props) {
   return (
     <ListBoxWrapper>
       {items.map((item, index) => (
-        <div onClick={() => setSelectedIndex(index)}>
+        <div key={index} onClick={() => setSelectedIndex(index)}>
           {templateProvider(item, selctedIndex === index)}
         </div>
       ))}
