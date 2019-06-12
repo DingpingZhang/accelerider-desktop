@@ -3,7 +3,7 @@ import { TabControl, TabItem } from '../controls/tab-control';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
 import { FileExplorerTabContent } from './file-explorer-tab-content';
 
-export function FileExplorerTabItem(props) {
+export function FileExplorerTabItem() {
   return (
     <TabControl
       tabPanelBackground="white"

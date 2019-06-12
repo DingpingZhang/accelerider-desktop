@@ -14,11 +14,11 @@ export function MainWindow(props) {
           <MainTabHeaderItem isSelected={isSelected}>{data}</MainTabHeaderItem>
         )}
       >
-        <TabItem header="Tab-A">
+        <TabItem header="Disk">
           <FileExplorerTabItem />
         </TabItem>
-        <TabItem header="Tab-B">Content - B</TabItem>
-        <TabItem header="Tab-C">Content - C</TabItem>
+        <TabItem header="Tasks">Content - B</TabItem>
+        <TabItem header="Group">Content - C</TabItem>
       </TabControl>
     </Window>
   );
