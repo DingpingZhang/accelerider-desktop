@@ -1,13 +1,13 @@
 import React from 'react';
 import { TabControl, TabItem } from '../controls/tab-control';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
-import { FileExplorerTabContent } from './file-explorer-tab-content';
+import { FileExplorerTabContent } from './tab-content';
 
 export function FileExplorerTabItem() {
   return (
     <TabControl
       tabPanelBackground="white"
-      dataTemplate={(data, isSelected) => (
+      renderHeaderItem={(data, isSelected) => (
         <FileExplorerTabHeaderItem isSelected={isSelected}>
           {data}
         </FileExplorerTabHeaderItem>

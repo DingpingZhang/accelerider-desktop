@@ -2,15 +2,15 @@ import React from 'react';
 import logo from '../images/logo.svg';
 import { Window } from '../controls/window';
 import { TabControl, TabItem } from '../controls/tab-control';
-import { FileExplorerTabItem } from '../file-explorer-tab-item';
+import { FileExplorerTabItem } from '../file-explorer';
 import { MainTabHeaderItem } from './main-tab-header-item';
 
-export function MainWindow(props) {
+export function MainWindow() {
   return (
     <Window icon={logo} title="App Demo">
       <TabControl
         tabPanelBackground="#2b3852"
-        dataTemplate={(data, isSelected) => (
+        renderHeaderItem={(data, isSelected) => (
           <MainTabHeaderItem isSelected={isSelected}>{data}</MainTabHeaderItem>
         )}
       >

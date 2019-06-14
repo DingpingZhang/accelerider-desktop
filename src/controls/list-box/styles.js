@@ -10,7 +10,6 @@ export const ListBoxWrapper = styled.div`
   /* ScrollBar for ListBox */
   &::-webkit-scrollbar {
     width: 10px;
-    margin: 0 4px;
 
     &-track {
       background: transparent;

@@ -6,8 +6,8 @@ import {
   FileIcon,
   FileListBoxItemText
 } from './styles';
-import { ItemDecorativeLine } from '../controls/decorative-line';
-import { GetFileIcon } from '../images/file-types';
+import { ItemDecorativeLine } from '../../controls/decorative-line';
+import { GetFileIcon } from '../../images/file-types';
 
 export function FileListBoxItem(props) {
   const { children, isSelected } = props;

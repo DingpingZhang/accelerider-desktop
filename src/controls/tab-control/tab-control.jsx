@@ -4,8 +4,8 @@ import { TabControlWrapper, TabPanel, TabContent } from './styles';
 export function TabControl(props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const { children, tabPanelBackground, dataTemplate } = props;
-  const dateTemplateProvider = dataTemplate || (data => data);
+  const { children, tabPanelBackground, renderHeaderItem } = props;
+  const headerItemRenderer = renderHeaderItem || (data => data);
   const selectedItem = children[selectedIndex];
 
   return (
@@ -14,7 +14,7 @@ export function TabControl(props) {
         {children.map((item, index) => {
           return (
             <div key={index} onClick={() => setSelectedIndex(index)}>
-              {dateTemplateProvider(item.props.header, selectedIndex === index)}
+              {headerItemRenderer(item.props.header, selectedIndex === index)}
             </div>
           );
         })}

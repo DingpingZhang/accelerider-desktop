@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FileExplorerTabContentWrapper, HorizontalDecorativeLine } from './styles';
-import { ListBox } from '../controls/list-box';
+import { ListBox } from '../../controls/list-box';
 import { FileListBoxItem } from './file-list-box-item';
 import { FileToolbar } from './file-toolbar';
-import { FilesSource } from './mock-data';
+import { FilesSource } from '../../mock-data/files-source';
 import { FileBreadcrumbs } from './file-breadcrumbs';
 
 export function FileExplorerTabContent() {
@@ -16,7 +16,8 @@ export function FileExplorerTabContent() {
       <HorizontalDecorativeLine />
       <ListBox
         itemsSource={FilesSource}
-        dataTemplate={(data, isSelected) => (
+        selectedItem={selectedItem}
+        renderItem={(data, isSelected) => (
           <div onDoubleClick={() => setSelectedItem(data.fileName)}>
             <FileListBoxItem isSelected={isSelected}>{data}</FileListBoxItem>
           </div>
