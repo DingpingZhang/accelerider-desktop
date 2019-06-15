@@ -26,21 +26,20 @@ export function ListBox({ children, itemsSource, renderItem, selectedItem, itemH
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const itemElements = items
-    .map((item, i) => ({
-      element: item,
-      index: i
-    }))
-    .filter((_, i) => canVisibleItem(i, scrollTop, containerHeight, itemHeight))
-    .map((item, i) => (
+  const startIndex = Math.floor(scrollTop / itemHeight);
+  const count = Math.ceil(containerHeight / itemHeight + 2); // 2 is scroll margin.
+  const itemElements = takeArray(items, startIndex, count).map((item, i) => {
+    const realIndex = startIndex + i;
+    return (
       <ListBoxItemWrapper
         key={i}
-        offsetTop={`${item.index * itemHeight}px`}
-        onClick={() => setSelectedIndex(item.index)}
+        offsetTop={`${realIndex * itemHeight}px`}
+        onClick={() => setSelectedIndex(realIndex)}
       >
-        {renderItem(item.element, selectedIndex === item.index)}
+        {renderItem(item, selectedIndex === realIndex)}
       </ListBoxItemWrapper>
-    ));
+    );
+  });
 
   return (
     <ListBoxWrapper ref={containerRef} onScroll={() => setScrollTop(containerRef.current.scrollTop)}>
@@ -60,9 +59,14 @@ export function ListBox({ children, itemsSource, renderItem, selectedItem, itemH
   );
 }
 
-function canVisibleItem(i, scrollTop, containerHeight, itemHeight, scrollMargion = 2) {
-  const offsetTop = i * itemHeight;
-  return offsetTop + itemHeight > scrollTop && offsetTop <= scrollTop + containerHeight + scrollMargion * itemHeight;
+function takeArray(array, start, count) {
+  const result = [];
+
+  for (let i = start; i < array.length && i < start + count; i++) {
+    result.push(array[i]);
+  }
+
+  return result;
 }
 
 ListBox.propTypes = {
@@ -73,5 +77,5 @@ ListBox.propTypes = {
 };
 
 ListBox.defalutProps = {
-  renderItem: data => data,
+  renderItem: data => data
 };

@@ -75,6 +75,7 @@ export const FileToolbarButton = styled.button`
   outline: none;
   font-size: 14px;
   font-weight: bold;
+  user-select: none;
   &:hover {
     background: #b1b5fe88;
   }
