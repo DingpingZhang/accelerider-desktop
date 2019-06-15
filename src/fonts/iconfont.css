@@ -1,32 +1,80 @@
 @font-face {
-  font-family: "iconfont";
-  src: url("iconfont.ttf") format("truetype"); /* iOS 4.1- */
+  font-family: 'iconfont';
+  src: url('iconfont.ttf') format('truetype'); /* iOS 4.1- */
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
+  font-family: 'iconfont' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-people:before {
+  content: '\e602';
+}
+
 .icon-restore:before {
-  content: "\e61e";
+  content: '\e61e';
 }
 
 .icon-close:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 
 .icon-maximize:before {
-  content: "\e604";
+  content: '\e604';
+}
+
+.icon-download:before {
+  content: '\e699';
+}
+
+.icon-files:before {
+  content: '\e9a0';
+}
+
+.icon-folders:before {
+  content: '\e9be';
 }
 
 .icon-right-arrow:before {
-  content: "\e608";
+  content: '\e608';
 }
 
 .icon-minimize:before {
-  content: "\e692";
+  content: '\e692';
+}
+
+.icon-delete:before {
+  content: '\e600';
+}
+
+.icon-menu:before {
+  content: '\e622';
+}
+
+.icon-app:before {
+  content: '\e62e';
+}
+
+.icon-share:before {
+  content: '\e60b';
+}
+
+.icon-tasks:before {
+  content: '\e63b';
+}
+
+.icon-refresh:before {
+  content: '\e605';
+}
+
+.icon-upload:before {
+  content: '\e648';
+}
+
+.icon-recyclebin:before {
+  content: '\eb14';
 }

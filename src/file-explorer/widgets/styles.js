@@ -64,7 +64,7 @@ export const FileToolbarWrapper = styled.div`
 `;
 
 export const FileToolbarButton = styled.button`
-  width: 120px;
+  width: 130px;
   height: 100%;
   margin: 0 4px 0 0;
   border-width: 0;
@@ -110,12 +110,4 @@ export const BreadcrumbThumb = styled.button`
   &:active {
     color: #a1a5ff;
   }
-`;
-
-export const Icon = styled.span.attrs(props => ({
-  className: `iconfont ${props.type}`
-}))`
-  width: auto;
-  height: auto;
-  margin: 0 2px;
 `;

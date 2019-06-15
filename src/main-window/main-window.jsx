@@ -7,18 +7,20 @@ import { MainTabHeaderItem } from './main-tab-header-item';
 
 export function MainWindow() {
   return (
-    <Window icon={logo} title="App Demo">
+    <Window icon={logo} title="Accelerider for Desktop">
       <TabControl
         tabPanelBackground="#2b3852"
         renderHeaderItem={(data, isSelected) => (
-          <MainTabHeaderItem isSelected={isSelected}>{data}</MainTabHeaderItem>
+          <MainTabHeaderItem icon={data.icon} isSelected={isSelected}>
+            {data.text}
+          </MainTabHeaderItem>
         )}
       >
-        <TabItem header="Disk">
+        <TabItem header={{ icon: 'folders', text: 'Net-Disk' }}>
           <FileExplorerTabItem />
         </TabItem>
-        <TabItem header="Tasks">Content - B</TabItem>
-        <TabItem header="Group">Content - C</TabItem>
+        <TabItem header={{ icon: 'tasks', text: 'Tasks' }}>Content - B</TabItem>
+        <TabItem header={{ icon: 'people', text: 'Groups' }}>Content - C</TabItem>
       </TabControl>
     </Window>
   );
