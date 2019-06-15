@@ -3,8 +3,10 @@ import { FileExplorerTabContentWrapper, HorizontalDecorativeLine } from './style
 import { ListBox } from '../../controls/list-box';
 import { FileListBoxItem } from './file-list-box-item';
 import { FileToolbar } from './file-toolbar';
-import { FilesSource } from '../../mock-data/files-source';
 import { FileBreadcrumbs } from './file-breadcrumbs';
+import { FileListSource } from '../../mock-data/files-source';
+
+const LIST_BOX_ITEM_HEIGHT_PX = 50;
 
 export function FileExplorerTabContent() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -15,12 +17,13 @@ export function FileExplorerTabContent() {
       <FileToolbar />
       <HorizontalDecorativeLine />
       <ListBox
-        itemsSource={FilesSource}
+        itemHeight={LIST_BOX_ITEM_HEIGHT_PX}
+        itemsSource={FileListSource}
         selectedItem={selectedItem}
         renderItem={(data, isSelected) => (
-          <div onDoubleClick={() => setSelectedItem(data.fileName)}>
-            <FileListBoxItem isSelected={isSelected}>{data}</FileListBoxItem>
-          </div>
+          <FileListBoxItem isSelected={isSelected} onDoubleClick={() => setSelectedItem(data.fileName)}>
+            {data}
+          </FileListBoxItem>
         )}
       />
     </FileExplorerTabContentWrapper>

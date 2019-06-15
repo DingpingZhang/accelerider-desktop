@@ -4,14 +4,15 @@ export const ListBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  overflow-x: hidden;
-  overflow-y: overlay;
+  overflow: hidden overlay;
 
   /* ScrollBar for ListBox */
   &::-webkit-scrollbar {
     width: 10px;
 
     &-track {
+      /* FUCK! It does NOT work, the background is always white. */
+      /* May need to draw one with <div /> */
       background: transparent;
     }
 
@@ -28,4 +29,19 @@ export const ListBoxWrapper = styled.div`
       }
     }
   }
+`;
+
+export const Placeholder = styled.div`
+  width: 100%;
+  /* height: ${props => props.scrollHeight || '100%'}; */
+  position: relative;
+`;
+
+export const ListBoxItemWrapper = styled.div.attrs(props => ({
+  style: {
+    top: props.offsetTop || '0px'
+  }
+}))`
+  width: 100%;
+  position: absolute;
 `;

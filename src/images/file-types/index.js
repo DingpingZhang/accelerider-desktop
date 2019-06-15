@@ -47,6 +47,7 @@ export default FileTypes;
 export function GetFileIcon(filePath) {
   // TODO
   const fragment = filePath.split('.').pop();
-  console.log(fragment);
-  return fileTypesMap.find(map => map[0].includes(fragment))[1];
+  let result = fileTypesMap.find(map => map[0].includes(fragment));
+
+  return result ? result[1] : Other;
 }

@@ -1,127 +1,25 @@
-export const FilesSource = [
-    {
-      fileName: 'file Name - 1.apk',
-      size: '213MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 2.doc',
-      size: '23MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 3.txt',
-      size: '3MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 4.rar',
-      size: '213KB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 5.png',
-      size: '121MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 6.xls',
-      size: '2.13GB',
-      modifiedTime: '2019-1-1 23:32'
-    },
-    { fileName: 'file Name - 7.ppt', size: '220KB', modifiedTime: '2019-1-1 08:21' },
-    {
-      fileName: 'file Name - 1.apk',
-      size: '213MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 2.doc',
-      size: '23MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 3.txt',
-      size: '3MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 4.rar',
-      size: '213KB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 5.png',
-      size: '121MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 6.xls',
-      size: '2.13GB',
-      modifiedTime: '2019-1-1 23:32'
-    },
-    { fileName: 'file Name - 7.ppt', size: '220KB', modifiedTime: '2019-1-1 08:21' },
-    {
-      fileName: 'file Name - 1.apk',
-      size: '213MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 2.doc',
-      size: '23MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 3.txt',
-      size: '3MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 4.rar',
-      size: '213KB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 5.png',
-      size: '121MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 6.xls',
-      size: '2.13GB',
-      modifiedTime: '2019-1-1 23:32'
-    },
-    { fileName: 'file Name - 7.ppt', size: '220KB', modifiedTime: '2019-1-1 08:21' },
-    {
-      fileName: 'file Name - 1.apk',
-      size: '213MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 2.doc',
-      size: '23MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 3.txt',
-      size: '3MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 4.rar',
-      size: '213KB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 5.png',
-      size: '121MB',
-      modifiedTime: '2019-1-1 08:32'
-    },
-    {
-      fileName: 'file Name - 6.xls',
-      size: '2.13GB',
-      modifiedTime: '2019-1-1 23:32'
-    },
-    { fileName: 'file Name - 7.ppt', size: '220KB', modifiedTime: '2019-1-1 08:21' }
-  ];
-  
+const FileTypes = ['apk', 'doc', 'exe', 'png', 'mp3', 'ppt', 'xlsx', 'pdf', 'rar', 'zip', 'mp4'];
+
+export const FileListSource = Range(0, 10000, createMockFile);
+
+export const FileTreeSource = {
+  content: createMockFile(0),
+  children: []
+};
+
+function createMockFile(i) {
+  return {
+    fileName: `Mock File Name - ${i}.${FileTypes[Math.round(Math.random() * FileTypes.length - 1)]}`,
+    size: `${Math.round(Math.random() * 1024)} MB`,
+    modifiedTime: new Date().toLocaleString()
+  };
+}
+
+function Range(start, count, map) {
+  let result = [];
+  for (let index = start; index < count; index++) {
+    result.push(map(index));
+  }
+
+  return result;
+}
