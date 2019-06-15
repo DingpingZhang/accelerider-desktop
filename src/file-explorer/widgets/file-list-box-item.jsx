@@ -17,8 +17,8 @@ export function FileListBoxItem(props) {
       <FileListBoxItemContent>
         <FileIcon src={GetFileIcon(children.fileName)} />
         <FileListBoxItemText>{children.fileName}</FileListBoxItemText>
-        <FileListBoxItemText width="200px">{children.size}</FileListBoxItemText>
-        <FileListBoxItemText width="250px">{children.modifiedTime}</FileListBoxItemText>
+        <FileListBoxItemText >{children.size}</FileListBoxItemText>
+        <FileListBoxItemText >{children.modifiedTime}</FileListBoxItemText>
       </FileListBoxItemContent>
       <ListItemHorizontalDecorativeLine />
     </FileListBoxItemWrapper>

@@ -22,10 +22,11 @@ export const FileListBoxItemWrapper = styled.div`
 `;
 
 export const FileListBoxItemContent = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 32px 1fr 100px 200px;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 0 20px;
   box-sizing: border-box;
 `;
@@ -38,7 +39,6 @@ export const FileListBoxItemText = styled.div`
   white-space: nowrap;
   font-size: 12px;
   color: #333;
-  width: ${props => props.width || '100%'};
   height: 100%;
   margin: 0 20px;
 `;
