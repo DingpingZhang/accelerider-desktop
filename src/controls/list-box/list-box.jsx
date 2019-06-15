@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 export function ListBox({ children, itemsSource, renderItem, selectedItem, itemHeight }) {
   const items = itemsSource || children;
-  const itemRenderer = renderItem || (data => data);
   const initialSelectedIndex = items.indexOf(selectedItem);
 
   const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex !== -1 ? initialSelectedIndex : 0);
@@ -39,7 +38,7 @@ export function ListBox({ children, itemsSource, renderItem, selectedItem, itemH
         offsetTop={`${item.index * itemHeight}px`}
         onClick={() => setSelectedIndex(item.index)}
       >
-        {itemRenderer(item.element, selectedIndex === item.index)}
+        {renderItem(item.element, selectedIndex === item.index)}
       </ListBoxItemWrapper>
     ));
 
@@ -74,5 +73,5 @@ ListBox.propTypes = {
 };
 
 ListBox.defalutProps = {
-  itemsSource: []
+  renderItem: data => data,
 };
