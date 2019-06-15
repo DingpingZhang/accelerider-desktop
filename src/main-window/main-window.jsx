@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from '../images/logo.svg';
-import { Window } from '../controls/window';
-import { TabControl, TabItem } from '../controls/tab-control';
+import { TabControl, TabItem, Window } from '../controls';
 import { FileExplorerTabItem } from '../file-explorer';
 import { MainTabHeaderItem } from './main-tab-header-item';
+import logo from '../images/logo.svg';
 
 export function MainWindow() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FileExplorerTabContentWrapper, HorizontalDecorativeLine } from './styles';
-import { ListBox } from '../controls/list-box';
+import { ListBox } from '../controls';
 import { FileListBoxItem, FileToolbar, FileBreadcrumb } from './widgets';
 
 // TODO: Replace mock data

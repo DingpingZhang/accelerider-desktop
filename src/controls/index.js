@@ -1,9 +1,6 @@
-import styled from 'styled-components';
-
-export const Icon = styled.span.attrs(props => ({
-  className: `iconfont icon-${props.type}`,
-  style: {
-    fontSize: props.size || '16px',
-    margin: props.margin || 0
-  }
-}))``;
+export * from './styles';
+export * from './list-box/list-box';
+export * from './tab-control/tab-control';
+export * from './tab-control/tab-item';
+export * from './window/window';
+export * from './search-box/search-box';

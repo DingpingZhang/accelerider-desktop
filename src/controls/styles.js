@@ -8,3 +8,11 @@ export const ItemDecorativeLine = styled.div`
     background: ${props => props.fill || 'red'};
   }
 `;
+
+export const Icon = styled.span.attrs(props => ({
+  className: `iconfont icon-${props.type}`,
+  style: {
+    fontSize: props.size || '16px',
+    margin: props.margin || 0
+  }
+}))``;

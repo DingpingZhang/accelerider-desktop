@@ -6,7 +6,7 @@ import {
   FileIcon,
   FileListBoxItemText
 } from './styles';
-import { ItemDecorativeLine } from '../../controls/decorative-line';
+import { ItemDecorativeLine } from '../../controls';
 import { GetFileIcon } from '../../images/file-types';
 
 export function FileListBoxItem(props) {

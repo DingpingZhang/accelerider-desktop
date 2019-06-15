@@ -1,7 +1,6 @@
 import React from 'react';
 import { MainTabHeaderItemWrapper, MainTabHeaderContent } from './styles';
-import { ItemDecorativeLine } from '../controls/decorative-line';
-import { Icon } from '../controls';
+import { ItemDecorativeLine, Icon } from '../controls';
 import '../fonts/iconfont.css';
 
 export function MainTabHeaderItem({ children, isSelected, icon }) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabControl, TabItem } from '../controls/tab-control';
+import { TabControl, TabItem } from '../controls';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
 import { FileExplorerTabContent } from './file-explorer-tab-content';
 
