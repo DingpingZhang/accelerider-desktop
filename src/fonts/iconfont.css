@@ -23,6 +23,10 @@
   content: "\e604";
 }
 
+.icon-right-arrow:before {
+  content: "\e608";
+}
+
 .icon-minimize:before {
   content: "\e692";
 }

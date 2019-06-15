@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { FileExplorerTabContentWrapper, HorizontalDecorativeLine } from './styles';
-import { ListBox } from '../../controls/list-box';
-import { FileListBoxItem } from './file-list-box-item';
-import { FileToolbar } from './file-toolbar';
-import { FileBreadcrumbs } from './file-breadcrumbs';
-import { FileListSource } from '../../mock-data/files-source';
+import { ListBox } from '../controls/list-box';
+import { FileListBoxItem, FileToolbar, FileBreadcrumb } from './widgets';
+
+// TODO: Replace mock data
+import { FileListSource } from '../mock-data/files-source';
+const breadcrumbs = ['Home', 'Users', 'Source', 'flutter'];
 
 const LIST_BOX_ITEM_HEIGHT_PX = 50;
 
@@ -13,7 +14,7 @@ export function FileExplorerTabContent() {
 
   return (
     <FileExplorerTabContentWrapper>
-      <FileBreadcrumbs>Home > Users > zdp > source > flutter > dev</FileBreadcrumbs>
+      <FileBreadcrumb itemsSource={breadcrumbs} />
       <FileToolbar />
       <HorizontalDecorativeLine />
       <ListBox

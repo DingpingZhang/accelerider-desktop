@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const FileExplorerTabContentWrapper = styled.div`
-  display: grid;
-  grid-template-rows: auto auto auto calc(100vh - 186px);
-  margin: 48px 28px 0px 28px;
-  box-sizing: border-box;
-  height: calc(100% - 48px);
-  background: white;
-`;
-
 export const FileListBoxItemWrapper = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
@@ -65,12 +56,6 @@ export const ListItemHorizontalDecorativeLine = styled.div`
   background: #f1f2f4;
 `;
 
-export const HorizontalDecorativeLine = styled.div`
-  width: 100%;
-  height: 2px;
-  background: #f1f2f4;
-`;
-
 export const FileToolbarWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -98,7 +83,7 @@ export const FileToolbarButton = styled.button`
   }
 `;
 
-export const FileBreadcrumbsWrapper = styled.div`
+export const FileBreadcrumbWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 0 0 0 24px;
@@ -107,4 +92,30 @@ export const FileBreadcrumbsWrapper = styled.div`
   height: 50px;
   color: #333;
   font-size: 14px;
+  user-select: none;
+`;
+
+export const BreadcrumbThumb = styled.button`
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  border-width: 0;
+  background: transparent;
+  outline: none;
+  font-weight: bold;
+  color: #414881;
+  &:hover {
+    color: #414881c0;
+  }
+  &:active {
+    color: #a1a5ff;
+  }
+`;
+
+export const Icon = styled.span.attrs(props => ({
+  className: `iconfont ${props.type}`
+}))`
+  width: auto;
+  height: auto;
+  margin: 0 2px;
 `;
