@@ -57,7 +57,8 @@ export const ListItemHorizontalDecorativeLine = styled.div`
 `;
 
 export const FileToolbarWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, auto) 1fr auto 10px;
   align-items: center;
   width: 100%;
   height: 50px;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { TabControl, TabItem } from '../controls';
+import React, { Fragment } from 'react';
+import { TabControl, TabItem, SearchBox } from '../controls';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
 import { FileExplorerTabContent } from './file-explorer-tab-content';
 
@@ -9,6 +9,12 @@ export function FileExplorerTabItem() {
       tabPanelBackground="white"
       renderHeaderItem={(data, isSelected) => (
         <FileExplorerTabHeaderItem isSelected={isSelected}>{data}</FileExplorerTabHeaderItem>
+      )}
+      renderTabPanel={headers => (
+        <Fragment>
+          <SearchBox placeholder="Search" />
+          {headers}
+        </Fragment>
       )}
     >
       <TabItem header="All Files">

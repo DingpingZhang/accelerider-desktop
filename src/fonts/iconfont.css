@@ -78,3 +78,7 @@
 .icon-recyclebin:before {
   content: '\eb14';
 }
+
+.icon-search:before {
+  content: '\e601';
+}

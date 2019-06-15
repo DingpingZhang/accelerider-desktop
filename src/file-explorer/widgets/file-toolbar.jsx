@@ -2,6 +2,7 @@ import React from 'react';
 import { FileToolbarWrapper, FileToolbarButton } from './styles';
 import { Icon } from '../../controls';
 import '../../fonts/iconfont.css';
+import { IconButton, GridItem } from '../../controls';
 
 const butttonIconStyle = {
   margin: '0 8px 0 0'
@@ -26,6 +27,9 @@ export function FileToolbar() {
         <Icon type="delete" style={butttonIconStyle} />
         Delete
       </FileToolbarButton>
+      <GridItem col={5}>
+        <IconButton type="refresh" />
+      </GridItem>
     </FileToolbarWrapper>
   );
 }
