@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const GroupTabHeaderItemWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px auto 12px 1fr;
   align-items: center;
-  padding: 0 0 0 20px;
-  width: 250px;
+  width: 270px;
   height: 48px;
+  box-sizing: border-box;
   cursor: pointer;
   user-select: none;
   &.selected {
@@ -17,6 +18,13 @@ export const GroupTabHeaderItemWrapper = styled.div`
   &:hover {
     background: #f1f2f488;
   }
+`;
+
+export const GroupTabPanelWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 270px;
+  height: 100%;
 `;
 
 export const GroupTabContentWrapper = styled.div`

@@ -1,28 +1,35 @@
-import React, { Fragment } from 'react';
-import { TabControl, TabItem, SearchBox } from '../controls';
+import React from 'react';
+import { TabControl, TabItem, SearchBox, ListBox } from '../controls';
 import { GroupTabHeaderItem } from './group-tab-header-item';
 import { GroupTabContent } from './group-tab-content';
+
+import { GroupsSource } from '../mock-data/messages-source';
+import { GroupTabPanelWrapper } from './styles';
 
 export function GroupTabItem() {
   return (
     <TabControl
       tabPanelBackground="white"
-      renderHeaderItem={(data, isSelected) => (
-        <GroupTabHeaderItem isSelected={isSelected}>{data}</GroupTabHeaderItem>
+      itemsSource={GroupsSource}
+      renderItem={data => (
+        <TabItem header={data}>
+          <GroupTabContent />
+        </TabItem>
       )}
       renderTabPanel={headers => (
-        <Fragment>
+        <GroupTabPanelWrapper>
           <SearchBox placeholder="Search" />
-          {headers}
-        </Fragment>
+          <ListBox
+            itemHeight={48}
+            itemsSource={headers}
+            renderItem={(data, isSelected) => (
+              <GroupTabHeaderItem avatar={data.avatar} isSelected={isSelected}>
+                {data.name}
+              </GroupTabHeaderItem>
+            )}
+          />
+        </GroupTabPanelWrapper>
       )}
-    >
-      <TabItem header="All Files">
-        <GroupTabContent />
-      </TabItem>
-      <TabItem header="All Files">
-        <GroupTabContent />
-      </TabItem>
-    </TabControl>
+    />
   );
 }

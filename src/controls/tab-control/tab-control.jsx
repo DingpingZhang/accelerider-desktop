@@ -2,16 +2,26 @@ import React, { useState } from 'react';
 import { TabControlWrapper, TabPanel, TabContent } from './styles';
 import PropTypes from 'prop-types';
 
-export function TabControl({ children, tabPanelBackground, renderTabPanel, renderHeaderItem }) {
+export function TabControl({
+  itemsSource,
+  children,
+  tabPanelBackground,
+  renderItem,
+  renderTabPanel,
+  renderHeaderItem
+}) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const items = itemsSource || children;
+  const renderedItems = renderItem ? items.map(renderItem) : items;
+  const selectedItem = renderedItems[selectedIndex];
 
-  const selectedItem = children[selectedIndex];
-
-  const headers = children.map((item, index) => {
-    return (
+  const headers = renderedItems.map((item, index) => {
+    return renderHeaderItem ? (
       <div key={index} onClick={() => setSelectedIndex(index)}>
         {renderHeaderItem(item.props.header, selectedIndex === index)}
       </div>
+    ) : (
+      item.props.header
     );
   });
 
@@ -24,12 +34,13 @@ export function TabControl({ children, tabPanelBackground, renderTabPanel, rende
 }
 
 TabControl.propTypes = {
+  itemsSource: PropTypes.array,
   tabPanelBackground: PropTypes.string,
+  renderItem: PropTypes.func,
   renderTabPanel: PropTypes.func,
   renderHeaderItem: PropTypes.func
 };
 
 TabControl.defaultProps = {
-  renderTabPanel: headers => headers,
-  renderHeaderItem: data => data
+  renderTabPanel: headers => headers
 };
