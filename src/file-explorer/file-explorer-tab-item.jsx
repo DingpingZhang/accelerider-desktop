@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { TabControl, TabItem, SearchBox } from '../controls';
+import React from 'react';
+import { TabControl, TabItem, SearchBox, ListBox } from '../controls';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
 import { FileExplorerTabContent } from './file-explorer-tab-content';
 import { NetDiskSwitcher } from './widgets/net-disk-switcher';
@@ -12,7 +12,17 @@ export function FileExplorerTabItem() {
         <FileExplorerTabHeaderItem isSelected={isSelected}>{data}</FileExplorerTabHeaderItem>
       )}
       renderTabPanel={headers => (
-        <NetDiskSwitcher>
+        <NetDiskSwitcher
+          content={
+            <ListBox
+              itemsSource={['Baidu Cloud', 'Six Cloud', 'OneDrive', '115 Net Disk']}
+              itemHeight={48}
+              renderItem={(data, isSelected) => (
+                <FileExplorerTabHeaderItem isSelected={isSelected}>{data}</FileExplorerTabHeaderItem>
+              )}
+            />
+          }
+        >
           <SearchBox placeholder="Search" />
           {headers}
         </NetDiskSwitcher>
