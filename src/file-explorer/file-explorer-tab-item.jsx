@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { TabControl, TabItem, SearchBox } from '../controls';
 import { FileExplorerTabHeaderItem } from './file-explorer-tab-header-item';
 import { FileExplorerTabContent } from './file-explorer-tab-content';
+import { NetDiskSwitcher } from './widgets/net-disk-switcher';
 
 export function FileExplorerTabItem() {
   return (
@@ -11,10 +12,10 @@ export function FileExplorerTabItem() {
         <FileExplorerTabHeaderItem isSelected={isSelected}>{data}</FileExplorerTabHeaderItem>
       )}
       renderTabPanel={headers => (
-        <Fragment>
+        <NetDiskSwitcher>
           <SearchBox placeholder="Search" />
           {headers}
-        </Fragment>
+        </NetDiskSwitcher>
       )}
     >
       <TabItem header="All Files">
