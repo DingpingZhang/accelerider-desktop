@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 export function ListBox({ children, itemsSource, renderItem, selectedItem, itemHeight }) {
   const items = itemsSource || children;
-  const initialSelectedIndex = items.indexOf(selectedItem);
 
-  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex !== -1 ? initialSelectedIndex : 0);
+  const [selectedIndex, setSelectedIndex] = useState(() => {
+    const initialSelectedIndex = items.indexOf(selectedItem);
+    return initialSelectedIndex !== -1 ? initialSelectedIndex : 0;
+  });
   const [scrollTop, setScrollTop] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
 
@@ -31,11 +33,7 @@ export function ListBox({ children, itemsSource, renderItem, selectedItem, itemH
   const itemElements = takeArray(items, startIndex, count).map((item, i) => {
     const realIndex = startIndex + i;
     return (
-      <ListBoxItemWrapper
-        key={i}
-        offsetTop={`${realIndex * itemHeight}px`}
-        onClick={() => setSelectedIndex(realIndex)}
-      >
+      <ListBoxItemWrapper key={i} offsetTop={`${realIndex * itemHeight}px`} onClick={() => setSelectedIndex(realIndex)}>
         {renderItem(item, selectedIndex === realIndex)}
       </ListBoxItemWrapper>
     );

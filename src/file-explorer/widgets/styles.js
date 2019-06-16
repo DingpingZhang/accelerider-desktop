@@ -108,8 +108,10 @@ export const BreadcrumbThumb = styled.button`
   color: #414881;
   &:hover {
     color: #414881c0;
+    text-decoration: underline;
   }
   &:active {
     color: #a1a5ff;
+    text-decoration: underline;
   }
 `;

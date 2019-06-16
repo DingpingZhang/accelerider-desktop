@@ -82,3 +82,7 @@
 .icon-search:before {
   content: '\e601';
 }
+
+.icon-send:before {
+  content: '\e7c5';
+}

@@ -21,11 +21,10 @@ export const GroupTabHeaderItemWrapper = styled.div`
 
 export const GroupTabContentWrapper = styled.div`
   display: grid;
-  grid-template-rows: auto auto auto calc(100vh - 186px);
-  margin: 48px 28px 0px 28px;
+  grid-template-rows: 80px 1fr auto;
+  margin: 0 28px;
   box-sizing: border-box;
-  height: calc(100% - 48px);
-  background: white;
+  height: 100%;
 `;
 
 export const HorizontalDecorativeLine = styled.div`

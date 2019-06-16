@@ -16,3 +16,12 @@ export const Icon = styled.span.attrs(props => ({
     margin: props.margin || 0
   }
 }))``;
+
+export const Text = styled.span.attrs(props => ({
+  style: {
+    fontSize: props.fontSize || '12px',
+    color: props.foreground || '#333',
+    fontWeight: props.fontWeight || 'normal',
+    userSelect: props.allowSelect ? 'text' : 'none'
+  }
+}))``;
