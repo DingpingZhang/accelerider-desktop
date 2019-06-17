@@ -15,8 +15,8 @@ export function NetDiskSwitcher({ children, content }) {
     <NetDiskSwitcherWrapper className={status}>
       <BackgroundContentPresenter className={status}>{children}</BackgroundContentPresenter>
       <MaskBoard className={status} onClick={() => setIsExpanded(false)} />
-      <ContentPresenter className={status}>{content}</ContentPresenter>
       <CurrentItemThumb className={status} onClick={() => setIsExpanded(!isExpanded)} />
+      <ContentPresenter className={status}>{content}</ContentPresenter>
     </NetDiskSwitcherWrapper>
   );
 }

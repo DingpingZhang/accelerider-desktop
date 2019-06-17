@@ -18,7 +18,9 @@ export const MessageItemWrapper = styled.div`
   width: 100%;
 `;
 
-export const Avatar = styled.img`
+export const Avatar = styled.img.attrs(props => ({
+  draggable: false
+}))`
   width: 32px;
   height: 32px;
   border-radius: 16px;

@@ -43,10 +43,9 @@ export const CurrentItemThumb = styled.div`
   */
   opacity: 0.99;
   border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
   cursor: pointer;
   &.expanded {
-    box-shadow: 0 2px 5px #33333333;
+    box-shadow: 0 -2px 10px #33333333;
   }
 `;
 
