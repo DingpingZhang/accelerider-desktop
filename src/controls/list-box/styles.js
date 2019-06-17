@@ -11,7 +11,7 @@ export const ListBoxWrapper = styled.div`
     width: 10px;
 
     &-track {
-      /* FUCK! It does NOT work, the background is always white. */
+      /* BUG: FUCK! It does NOT work, the background is always white. */
       /* May need to draw one with <div /> */
       background: transparent;
     }
