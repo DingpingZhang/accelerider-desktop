@@ -19,8 +19,8 @@ export const MaskBoard = styled.div`
 
   width: 100%;
   height: 100%;
-  /* HACK: Sets opacity < 1, in order to this div can be hit tested. */
-  opacity: 0;
+  background: #ffffff80;
+  z-index: 0;
   &.expanded {
     display: block;
   }
@@ -37,11 +37,8 @@ export const CurrentItemThumb = styled.div`
   width: 100%;
   height: 54px;
   background: white;
-  /* HACK: Sets opacity < 1, in order to this div can be hit tested. 
-  * When the underlying element uses a blur effect, the effect seems to be penetrating, 
-  * which causes the upper element become to transparent and blurry.
-  */
-  opacity: 0.99;
+  /* Sets the z-index prop so that It is able to be placed on top of the blur element. */
+  z-index: 0;
   border-top: 1px solid #ccc;
   cursor: pointer;
   &.expanded {
@@ -58,11 +55,8 @@ export const ContentPresenter = styled.div`
   width: 100%;
   height: 350px;
   background: white;
-  /* HACK: Sets opacity < 1, in order to this div can be hit tested. 
-  * When the underlying element uses a blur effect, the effect seems to be penetrating, 
-  * which causes the upper element become to transparent and blurry.
-  */
-  opacity: 0.99;
+  /* Sets the z-index prop so that It is able to be placed on top of the blur element. */
+  z-index: 0;
   &.expanded {
     display: grid;
     grid-template-rows: 1fr;

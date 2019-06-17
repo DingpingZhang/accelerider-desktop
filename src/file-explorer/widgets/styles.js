@@ -43,7 +43,9 @@ export const FileListBoxItemText = styled.div`
   margin: 0 20px;
 `;
 
-export const FileIcon = styled.img`
+export const FileIcon = styled.img.attrs(props => ({
+  draggable: false
+}))`
   width: 32px;
   height: 32px;
 `;
