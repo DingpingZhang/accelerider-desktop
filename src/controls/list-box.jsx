@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ListBoxWrapper, Placeholder, ListBoxItemWrapper } from './styles';
+import { ListBoxWrapper, Placeholder, ListBoxItemWrapper } from './list-box.style';
 import PropTypes from 'prop-types';
 
 export function ListBox({ children, itemsSource, renderItem, selectedItem, itemHeight }) {

@@ -6,8 +6,8 @@ import {
   WindowTitleBarTitle,
   WindowCommandButton,
   WindowContent
-} from './styles.js';
-import '../../fonts/iconfont.css';
+} from './window.style';
+import '../fonts/iconfont.css';
 
 export function Window(props) {
   const [isMaximized, setIsMaximized] = useState(false);
