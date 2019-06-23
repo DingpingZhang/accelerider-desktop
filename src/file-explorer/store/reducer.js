@@ -3,7 +3,8 @@ import {
   SET_SELECTED_FILE_TYPE_INDEX,
   SET_SELECTED_FILE_INDEX,
   SET_SELECTED_NET_DISK_INDEX,
-  SET_IS_SWITCHER_EXPANDED
+  SET_IS_SWITCHER_EXPANDED,
+  SET_FILE_LIST_SCROLL_TOP
 } from './constants';
 
 const defaultState = fromJS({
@@ -27,6 +28,8 @@ export default (state = defaultState, action) => {
       return state.set('selectedNetDiskIndex', action.value);
     case SET_IS_SWITCHER_EXPANDED:
       return state.set('isSwitcherExpanded', action.value);
+    case SET_FILE_LIST_SCROLL_TOP:
+      return state.set('fileListScrollTop', action.value);
     default:
       return state;
   }

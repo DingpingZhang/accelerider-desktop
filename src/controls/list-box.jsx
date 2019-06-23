@@ -1,22 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ListBoxWrapper, Placeholder, ListBoxItemWrapper } from './list-box.style';
+import { throttle } from '../helpers';
 import PropTypes from 'prop-types';
 
-export function ListBox({ children, selectedIndex, setSelectedIndex, itemsSource, renderItem, itemHeight }) {
-  const items = itemsSource || children;
-
-  const [scrollTop, setScrollTop] = useState(0);
+export function ListBox({
+  children,
+  selectedIndex,
+  setSelectedIndex,
+  itemsSource,
+  renderItem,
+  itemHeight,
+  scrollTop,
+  setScrollTop
+}) {
+  const [innerSelectedIndex, setInnerSelectedIndex] = useState(0);
+  const [innerScrollTop, setInnerScrollTop] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
 
   const containerRef = useRef(null);
 
+  [selectedIndex, setSelectedIndex] = [selectedIndex || innerSelectedIndex, setSelectedIndex || setInnerSelectedIndex];
+  [scrollTop, setScrollTop] = [scrollTop || innerScrollTop, setScrollTop || setInnerScrollTop];
+
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      setScrollTop(container.scrollTop);
+      container.scrollTo({
+        top: scrollTop
+      });
       setContainerHeight(container.offsetHeight);
     }
-  }, [containerRef]);
+  }, [containerRef, scrollTop]);
   useEffect(() => {
     const onResize = () => setContainerHeight(containerRef.current.offsetHeight);
     window.addEventListener('resize', onResize);
@@ -24,9 +38,11 @@ export function ListBox({ children, selectedIndex, setSelectedIndex, itemsSource
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  const items = itemsSource || children;
   const startIndex = Math.floor(scrollTop / itemHeight);
-  const count = Math.ceil(containerHeight / itemHeight + 2); // 2 is scroll margin.
-  const itemElements = takeArray(items, startIndex, count).map((item, i) => {
+  const count = Math.ceil(containerHeight / itemHeight);
+  // 2 is scroll margin.
+  const itemElements = takeArray(items, startIndex, 2 * count).map((item, i) => {
     const realIndex = startIndex + i;
     return (
       <ListBoxItemWrapper key={i} offsetTop={`${realIndex * itemHeight}px`} onClick={() => setSelectedIndex(realIndex)}>
@@ -36,7 +52,8 @@ export function ListBox({ children, selectedIndex, setSelectedIndex, itemsSource
   });
 
   return (
-    <ListBoxWrapper ref={containerRef} onScroll={() => setScrollTop(containerRef.current.scrollTop)}>
+    // TODO: apply throttle function to onScroll handler.
+    <ListBoxWrapper ref={containerRef} onScroll={throttle(() => setScrollTop(containerRef.current.scrollTop), 200)}>
       {/* <Placeholder scrollHeight={`${items.length * itemHeight}px`}> */}
       <Placeholder>
         {/* HACK: Hold the height of the scroll area, and palce it on top of item elements to
@@ -66,11 +83,14 @@ function takeArray(array, start, count) {
 ListBox.propTypes = {
   itemHeight: PropTypes.number.isRequired,
   renderItem: PropTypes.func.isRequired,
-  itemsSource: PropTypes.array,
-  selectedIndex: PropTypes.number.isRequired,
-  setSelectedIndex: PropTypes.func.isRequired
+  selectedIndex: PropTypes.number,
+  setSelectedIndex: PropTypes.func,
+  scrollTop: PropTypes.number,
+  setScrollTop: PropTypes.func,
+  itemsSource: PropTypes.array
 };
 
 ListBox.defalutProps = {
-  renderItem: data => data
+  renderItem: data => data,
+  scrollTop: 0
 };

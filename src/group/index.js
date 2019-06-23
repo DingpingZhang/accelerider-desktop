@@ -1,1 +1,3 @@
-export * from './group-tab-item';
+import GroupTabItem from './group-tab-item';
+
+export { GroupTabItem };

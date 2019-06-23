@@ -9,8 +9,8 @@ export function TabControl({
   children,
   tabPanelBackground,
   renderItem,
-  renderTabPanel,
-  renderHeaderItem
+  renderHeaderItem,
+  renderTabPanel
 }) {
   const items = itemsSource || children;
   const renderedItems = renderItem ? items.map(renderItem) : items;
@@ -28,20 +28,20 @@ export function TabControl({
 
   return (
     <TabControlWrapper>
-      <TabPanel background={tabPanelBackground}>{renderTabPanel(headers)}</TabPanel>
+      <TabPanel background={tabPanelBackground}>{renderTabPanel(headers, selectedIndex, setSelectedIndex)}</TabPanel>
       <TabContent>{selectedItem.props.children}</TabContent>
     </TabControlWrapper>
   );
 }
 
 TabControl.propTypes = {
+  selectedIndex: PropTypes.number.isRequired,
+  setSelectedIndex: PropTypes.func.isRequired,
   itemsSource: PropTypes.array,
   tabPanelBackground: PropTypes.string,
   renderItem: PropTypes.func,
   renderTabPanel: PropTypes.func,
-  renderHeaderItem: PropTypes.func,
-  selectedIndex: PropTypes.number.isRequired,
-  setSelectedIndex: PropTypes.func.isRequired
+  renderHeaderItem: PropTypes.func
 };
 
 TabControl.defaultProps = {

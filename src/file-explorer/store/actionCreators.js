@@ -2,7 +2,8 @@ import {
   SET_SELECTED_FILE_TYPE_INDEX,
   SET_SELECTED_FILE_INDEX,
   SET_SELECTED_NET_DISK_INDEX,
-  SET_IS_SWITCHER_EXPANDED
+  SET_IS_SWITCHER_EXPANDED,
+  SET_FILE_LIST_SCROLL_TOP
 } from './constants';
 
 export const setSelectedFileTypeIndexAction = index => ({
@@ -22,5 +23,10 @@ export const setSelectedNetDiskIndexAction = index => ({
 
 export const setIsSwitcherExpandedAction = value => ({
   type: SET_IS_SWITCHER_EXPANDED,
+  value
+});
+
+export const setFileListScrollTopAction = value => ({
+  type: SET_FILE_LIST_SCROLL_TOP,
   value
 });
