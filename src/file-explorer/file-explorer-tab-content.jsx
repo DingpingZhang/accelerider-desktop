@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { FileExplorerTabContentWrapper, HorizontalDecorativeLine } from './styles';
 import { ListBox } from '../controls';
 import { FileListBoxItem, FileToolbar, FileBreadcrumb } from './widgets';
-import { setSelectedFileIndexAction, setFileListScrollTopAction } from './store/actionCreators';
+import { setSelectedFileIndexAction, setFileListScrollTopAction, fetchFileListAction } from './store/actionCreators';
 
 // TODO: Replace mock data
-import { FileListSource } from '../mock-data/files-source';
 const breadcrumbs = ['Home', 'Users', 'Source', 'flutter'];
 
 const LIST_BOX_ITEM_HEIGHT_PX = 50;
 
-function FileExplorerTabContent({ selectedFileIndex, setSelectedFileIndex, fileListScrollTop, setFileListScrollTop }) {
+function FileExplorerTabContent({
+  selectedFileIndex,
+  setSelectedFileIndex,
+  fileListScrollTop,
+  setFileListScrollTop,
+  fileList,
+  fetchFileList
+}) {
+  useEffect(() => fetchFileList('/'), [fetchFileList]);
+
   return (
     <FileExplorerTabContentWrapper>
       <FileBreadcrumb itemsSource={breadcrumbs} />
@@ -23,7 +31,7 @@ function FileExplorerTabContent({ selectedFileIndex, setSelectedFileIndex, fileL
         setSelectedIndex={setSelectedFileIndex}
         scrollTop={fileListScrollTop}
         setScrollTop={setFileListScrollTop}
-        itemsSource={FileListSource}
+        itemsSource={fileList}
         renderItem={(data, isSelected) => (
           <FileListBoxItem
             isSelected={isSelected}
@@ -41,12 +49,14 @@ function FileExplorerTabContent({ selectedFileIndex, setSelectedFileIndex, fileL
 
 const mapStateToProps = state => ({
   selectedFileIndex: state.fileExplorer.get('selectedFileIndex'),
-  fileListScrollTop: state.fileExplorer.get('fileListScrollTop')
+  fileListScrollTop: state.fileExplorer.get('fileListScrollTop'),
+  fileList: state.fileExplorer.get('fileList')
 });
 
 const mapDispatchToProps = dispatch => ({
   setSelectedFileIndex: index => dispatch(setSelectedFileIndexAction(index)),
-  setFileListScrollTop: value => dispatch(setFileListScrollTopAction(value))
+  setFileListScrollTop: value => dispatch(setFileListScrollTopAction(value)),
+  fetchFileList: path => dispatch(fetchFileListAction(path))
 });
 
 export default connect(

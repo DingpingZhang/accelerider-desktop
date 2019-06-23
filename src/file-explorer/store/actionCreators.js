@@ -3,8 +3,12 @@ import {
   SET_SELECTED_FILE_INDEX,
   SET_SELECTED_NET_DISK_INDEX,
   SET_IS_SWITCHER_EXPANDED,
-  SET_FILE_LIST_SCROLL_TOP
+  SET_FILE_LIST_SCROLL_TOP,
+  SET_FILE_LIST
 } from './constants';
+
+// TODO: Replace mock data
+import { FileListSource } from '../../mock-data/files-source';
 
 export const setSelectedFileTypeIndexAction = index => ({
   type: SET_SELECTED_FILE_TYPE_INDEX,
@@ -28,5 +32,16 @@ export const setIsSwitcherExpandedAction = value => ({
 
 export const setFileListScrollTopAction = value => ({
   type: SET_FILE_LIST_SCROLL_TOP,
+  value
+});
+
+export const fetchFileListAction = path => {
+  return dispatch => {
+    dispatch(setFileListAction(FileListSource));
+  };
+};
+
+export const setFileListAction = value => ({
+  type: SET_FILE_LIST,
   value
 });

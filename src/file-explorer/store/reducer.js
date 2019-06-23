@@ -1,10 +1,11 @@
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 import {
   SET_SELECTED_FILE_TYPE_INDEX,
   SET_SELECTED_FILE_INDEX,
   SET_SELECTED_NET_DISK_INDEX,
   SET_IS_SWITCHER_EXPANDED,
-  SET_FILE_LIST_SCROLL_TOP
+  SET_FILE_LIST_SCROLL_TOP,
+  SET_FILE_LIST
 } from './constants';
 
 const defaultState = fromJS({
@@ -30,6 +31,8 @@ export default (state = defaultState, action) => {
       return state.set('isSwitcherExpanded', action.value);
     case SET_FILE_LIST_SCROLL_TOP:
       return state.set('fileListScrollTop', action.value);
+    case SET_FILE_LIST:
+      return state.set('fileList', List(action.value));
     default:
       return state;
   }

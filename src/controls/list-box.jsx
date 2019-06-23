@@ -42,7 +42,7 @@ export function ListBox({
   const startIndex = Math.floor(scrollTop / itemHeight);
   const count = Math.ceil(containerHeight / itemHeight);
   // 2 is scroll margin.
-  const itemElements = takeArray(items, startIndex, 2 * count).map((item, i) => {
+  const itemElements = items.slice(startIndex, startIndex + Math.min(2 * count, getLength(items))).map((item, i) => {
     const realIndex = startIndex + i;
     return (
       <ListBoxItemWrapper key={i} offsetTop={`${realIndex * itemHeight}px`} onClick={() => setSelectedIndex(realIndex)}>
@@ -61,7 +61,7 @@ export function ListBox({
          * may cover item elements.
          */}
         <div
-          style={{ position: 'absolute', top: `${(items.length - 1) * itemHeight}px`, height: '1px', width: '1px' }}
+          style={{ position: 'absolute', top: `${(getLength(items) - 1) * itemHeight}px`, height: '1px', width: '1px' }}
         />
 
         {itemElements}
@@ -70,15 +70,7 @@ export function ListBox({
   );
 }
 
-function takeArray(array, start, count) {
-  const result = [];
-
-  for (let i = start; i < array.length && i < start + count; i++) {
-    result.push(array[i]);
-  }
-
-  return result;
-}
+const getLength = list => list.length || list.size;
 
 ListBox.propTypes = {
   itemHeight: PropTypes.number.isRequired,
@@ -87,7 +79,7 @@ ListBox.propTypes = {
   setSelectedIndex: PropTypes.func,
   scrollTop: PropTypes.number,
   setScrollTop: PropTypes.func,
-  itemsSource: PropTypes.array
+  itemsSource: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 
 ListBox.defalutProps = {
