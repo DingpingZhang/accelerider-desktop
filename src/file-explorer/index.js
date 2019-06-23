@@ -1,1 +1,3 @@
-export * from './file-explorer-tab-item';
+import FileExplorerTabItem from './file-explorer-tab-item';
+
+export { FileExplorerTabItem };

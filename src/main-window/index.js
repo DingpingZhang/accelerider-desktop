@@ -1,1 +1,3 @@
-export * from './main-window';
+import MainWindow from './main-window';
+
+export { MainWindow };

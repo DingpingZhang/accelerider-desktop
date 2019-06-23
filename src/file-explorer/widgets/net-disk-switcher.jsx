@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   NetDiskSwitcherWrapper,
   MaskBoard,
@@ -7,9 +8,7 @@ import {
   BackgroundContentPresenter
 } from './net-disk-switcher.style';
 
-export function NetDiskSwitcher({ children, content }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+export function NetDiskSwitcher({ children, content, isExpanded, setIsExpanded }) {
   const status = isExpanded ? 'expanded' : '';
   return (
     <NetDiskSwitcherWrapper className={status}>
@@ -20,3 +19,8 @@ export function NetDiskSwitcher({ children, content }) {
     </NetDiskSwitcherWrapper>
   );
 }
+
+NetDiskSwitcher.propTypes = {
+  isExpanded: PropTypes.bool.isRequired,
+  setIsExpanded: PropTypes.func.isRequired
+};

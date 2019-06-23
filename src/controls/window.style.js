@@ -10,6 +10,7 @@ export const WindowWrapper = styled.div`
 `;
 
 export const WindowTitleBar = styled.div`
+  -webkit-app-region: drag;
   display: grid;
   grid-template-columns: auto 1fr auto;
   height: 36px;
@@ -30,6 +31,7 @@ export const WindowTitleBarTitle = styled.span`
 `;
 
 export const WindowCommandButton = styled.button`
+  -webkit-app-region: no-drag;
   width: 48px;
   height: 36px;
   margin: 0 0 0 4px;

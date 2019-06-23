@@ -2,13 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ListBoxWrapper, Placeholder, ListBoxItemWrapper } from './list-box.style';
 import PropTypes from 'prop-types';
 
-export function ListBox({ children, itemsSource, renderItem, selectedItem, itemHeight }) {
+export function ListBox({ children, selectedIndex, setSelectedIndex, itemsSource, renderItem, itemHeight }) {
   const items = itemsSource || children;
 
-  const [selectedIndex, setSelectedIndex] = useState(() => {
-    const initialSelectedIndex = items.indexOf(selectedItem);
-    return initialSelectedIndex !== -1 ? initialSelectedIndex : 0;
-  });
   const [scrollTop, setScrollTop] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
 
@@ -71,7 +67,8 @@ ListBox.propTypes = {
   itemHeight: PropTypes.number.isRequired,
   renderItem: PropTypes.func.isRequired,
   itemsSource: PropTypes.array,
-  selectedItem: PropTypes.any
+  selectedIndex: PropTypes.number.isRequired,
+  setSelectedIndex: PropTypes.func.isRequired
 };
 
 ListBox.defalutProps = {
