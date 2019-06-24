@@ -5,19 +5,21 @@ import PropTypes from 'prop-types';
 
 export function ListBox({
   children,
+  scrollTop,
+  setScrollTop,
   selectedIndex,
   setSelectedIndex,
   itemsSource,
   renderItem,
   itemHeight,
-  scrollTop,
-  setScrollTop
+  extraItemCount
 }) {
   const [innerSelectedIndex, setInnerSelectedIndex] = useState(0);
   const [innerScrollTop, setInnerScrollTop] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
 
   const containerRef = useRef(null);
+
 
   [selectedIndex, setSelectedIndex] = [selectedIndex || innerSelectedIndex, setSelectedIndex || setInnerSelectedIndex];
   [scrollTop, setScrollTop] = [scrollTop || innerScrollTop, setScrollTop || setInnerScrollTop];
@@ -39,10 +41,10 @@ export function ListBox({
   }, []);
 
   const items = itemsSource || children;
-  const startIndex = Math.floor(scrollTop / itemHeight);
-  const count = Math.ceil(containerHeight / itemHeight);
-  // 2 is scroll margin.
-  const itemElements = items.slice(startIndex, startIndex + Math.min(2 * count, getLength(items))).map((item, i) => {
+
+  const { startIndex, count } = getItemsRange(getLength(items), extraItemCount, scrollTop, itemHeight, containerHeight);
+
+  const itemElements = items.slice(startIndex, count).map((item, i) => {
     const realIndex = startIndex + i;
     return (
       <ListBoxItemWrapper key={i} offsetTop={`${realIndex * itemHeight}px`} onClick={() => setSelectedIndex(realIndex)}>
@@ -70,19 +72,31 @@ export function ListBox({
   );
 }
 
-const getLength = list => list.length || list.size;
+function getItemsRange(itemsCount, extraItemCount, scrollTop, itemHeight, containerHeight) {
+  let startIndex = Math.floor(scrollTop / itemHeight);
+  let count = Math.ceil(containerHeight / itemHeight);
+  extraItemCount = Math.ceil(extraItemCount);
+  count = Math.min(startIndex + count + extraItemCount, itemsCount);
+  startIndex = Math.max(startIndex - extraItemCount, 0);
+  return { startIndex, count };
+}
+
+function getLength(list) {
+  return list.length || list.size;
+}
 
 ListBox.propTypes = {
   itemHeight: PropTypes.number.isRequired,
   renderItem: PropTypes.func.isRequired,
-  selectedIndex: PropTypes.number,
-  setSelectedIndex: PropTypes.func,
   scrollTop: PropTypes.number,
   setScrollTop: PropTypes.func,
-  itemsSource: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  selectedIndex: PropTypes.number,
+  setSelectedIndex: PropTypes.func,
+  itemsSource: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  extraItemCount: PropTypes.number
 };
 
-ListBox.defalutProps = {
+ListBox.defaultProps = {
   renderItem: data => data,
-  scrollTop: 0
+  extraItemCount: 10
 };

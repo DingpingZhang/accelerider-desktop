@@ -26,11 +26,12 @@ function FileExplorerTabContent({
       <FileToolbar />
       <HorizontalDecorativeLine />
       <ListBox
+        extraItemCount={20}
         itemHeight={LIST_BOX_ITEM_HEIGHT_PX}
-        selectedIndex={selectedFileIndex}
-        setSelectedIndex={setSelectedFileIndex}
         scrollTop={fileListScrollTop}
         setScrollTop={setFileListScrollTop}
+        selectedIndex={selectedFileIndex}
+        setSelectedIndex={setSelectedFileIndex}
         itemsSource={fileList}
         renderItem={(data, isSelected) => (
           <FileListBoxItem
