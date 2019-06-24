@@ -1,14 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchFileListAction } from '../store/actionCreators';
 import { FileToolbarWrapper, FileToolbarButton } from './styles';
 import { Icon } from '../../controls';
-import '../../fonts/iconfont.css';
 import { IconButton, GridItem } from '../../controls';
+import '../../fonts/iconfont.css';
 
 const butttonIconStyle = {
   margin: '0 8px 0 0'
 };
 
-export function FileToolbar() {
+function FileToolbar({ fetchFileList }) {
   return (
     <FileToolbarWrapper>
       <FileToolbarButton>
@@ -28,8 +30,19 @@ export function FileToolbar() {
         Delete
       </FileToolbarButton>
       <GridItem col={5}>
-        <IconButton type="refresh" />
+        <IconButton type="refresh" onClick={() => fetchFileList('./')} />
       </GridItem>
     </FileToolbarWrapper>
   );
 }
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  fetchFileList: path => dispatch(fetchFileListAction(path))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FileToolbar);

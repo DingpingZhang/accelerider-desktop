@@ -16,9 +16,9 @@ const Wrapper = styled.button`
   }
 `;
 
-export function IconButton({ type }) {
+export function IconButton({ type, onClick }) {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <Icon type={type} />
     </Wrapper>
   );
