@@ -4,9 +4,10 @@ import { GroupTabContentWrapper } from './styles';
 import { MessageSender } from './widgets/message-sender';
 import { ListBox } from '../controls';
 import { MessageItem } from './widgets/message-item';
-
-import { MessagesSource } from '../mock-data/messages-source';
 import { setMessageListScrollTopAction } from './store/actionCreators';
+
+// TODO: Mock data
+import { MessagesSource } from '../mocks/messages-source';
 
 function GroupTabContent({ messageListScrollTop, setMessageListScrollTop }) {
   return (

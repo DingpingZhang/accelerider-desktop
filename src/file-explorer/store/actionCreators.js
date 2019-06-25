@@ -7,8 +7,8 @@ import {
   SET_FILE_LIST
 } from './constants';
 
-// TODO: Replace mock data
-import { FileListSource } from '../../mock-data/files-source';
+// TODO: Mock data
+import { FileListSource } from '../../mocks/files-source';
 
 export const setSelectedFileTypeIndexAction = index => ({
   type: SET_SELECTED_FILE_TYPE_INDEX,

@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { TabControl, TabItem, SearchBox, ListBox } from '../controls';
 import { GroupTabHeaderItem } from './group-tab-header-item';
 import GroupTabContent from './group-tab-content';
-
-import { GroupsSource } from '../mock-data/messages-source';
 import { GroupTabPanelWrapper } from './styles';
 import { setContactListScrollTopAction, setSelectedContactIndexAction } from './store/actionCreators';
+
+// TODO: Mock data
+import { GroupsSource } from '../mocks/messages-source';
 
 function GroupTabItem({
   contactListScrollTop,
