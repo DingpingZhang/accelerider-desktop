@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const GroupTabHeaderItemWrapper = styled.div`
   display: grid;
-  grid-template-columns: 20px auto 12px 1fr;
+  grid-template-columns: 20px auto 12px 1fr 8px auto 14px;
+  grid-template-rows: 1fr auto 8px auto 1fr;
   align-items: center;
   width: 270px;
-  height: 48px;
+  height: 60px;
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;

@@ -15,7 +15,7 @@ export function MessageItem({ message, isSelected }) {
             </Text>
           </GridItem>
           <GridItem col={2}>
-            <Text foreground="#888">{createdTime}</Text>
+            <Text foreground="#888">{createdTime.toLocaleString()}</Text>
           </GridItem>
           <GridItem row={2} col={0} colSpan={3}>
             <Text fontSize="14px" allowSelect>

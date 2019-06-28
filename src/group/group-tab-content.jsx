@@ -6,10 +6,7 @@ import { ListBox } from '../controls';
 import { MessageItem } from './widgets/message-item';
 import { setMessageListScrollTopAction } from './store/actionCreators';
 
-// TODO: Mock data
-import { MessagesSource } from '../mocks/messages-source';
-
-function GroupTabContent({ messageListScrollTop, setMessageListScrollTop }) {
+function GroupTabContent({ messageListScrollTop, setMessageListScrollTop, messages }) {
   return (
     <GroupTabContentWrapper>
       <div />
@@ -17,7 +14,7 @@ function GroupTabContent({ messageListScrollTop, setMessageListScrollTop }) {
         scrollTop={messageListScrollTop}
         setScrollTop={setMessageListScrollTop}
         direction="column-reverse"
-        itemsSource={MessagesSource}
+        itemsSource={messages}
         itemHeight={100}
         renderItem={(data, isSelected) => <MessageItem message={data} isSelected={isSelected} />}
       />

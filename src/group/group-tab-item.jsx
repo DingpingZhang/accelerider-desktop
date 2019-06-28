@@ -23,7 +23,7 @@ function GroupTabItem({
       itemsSource={GroupsSource}
       renderItem={data => (
         <TabItem header={data}>
-          <GroupTabContent />
+          <GroupTabContent messages={data.messages} />
         </TabItem>
       )}
       renderTabPanel={(headers, selectedIndex, setSelectedIndex) => (
@@ -34,13 +34,18 @@ function GroupTabItem({
             setScrollTop={setContactListScrollTop}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
-            itemHeight={48}
+            itemHeight={60}
             itemsSource={headers}
-            renderItem={(data, isSelected) => (
-              <GroupTabHeaderItem avatar={data.avatar} isSelected={isSelected}>
-                {data.name}
-              </GroupTabHeaderItem>
-            )}
+            renderItem={(data, isSelected) => {
+              return (
+                <GroupTabHeaderItem
+                  isSelected={isSelected}
+                  avatar={data.avatar}
+                  name={data.name}
+                  latestMessage={data.messages.slice(-1)[0]}
+                />
+              );
+            }}
           />
         </GroupTabPanelWrapper>
       )}
