@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon } from './styles';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.button`
   background: transparent;
@@ -23,3 +24,8 @@ export function IconButton({ type, onClick }) {
     </Wrapper>
   );
 }
+
+IconButton.propTypes = {
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func
+};
