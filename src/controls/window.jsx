@@ -7,27 +7,25 @@ import {
   WindowCommandButton,
   WindowContent
 } from './window.style';
+import PropTypes from 'prop-types';
 import '../fonts/iconfont.css';
 
-export function Window(props) {
-  const [isMaximized, setIsMaximized] = useState(false);
-  const { icon, title, children } = props;
-
+export function Window({ windowState, setWindowState, icon, title, children }) {
   return (
     <WindowWrapper>
       <WindowTitleBar>
         <WindowTitleBarIcon src={icon} />
         <WindowTitleBarTitle>{title}</WindowTitleBarTitle>
         <div className="window-commands">
-          <WindowCommandButton>
+          <WindowCommandButton onClick={() => setWindowState('minimized')}>
             <span className="iconfont icon-minimize" />
           </WindowCommandButton>
-          {isMaximized ? (
-            <WindowCommandButton onClick={() => setIsMaximized(false)}>
+          {windowState === 'maximized' ? (
+            <WindowCommandButton onClick={() => setWindowState('normal')}>
               <span className="iconfont icon-restore" />
             </WindowCommandButton>
           ) : (
-            <WindowCommandButton onClick={() => setIsMaximized(true)}>
+            <WindowCommandButton onClick={() => setWindowState('maximized')}>
               <span className="iconfont icon-maximize" />
             </WindowCommandButton>
           )}
@@ -40,3 +38,13 @@ export function Window(props) {
     </WindowWrapper>
   );
 }
+
+Window.propTypes = {
+  title: PropTypes.string,
+  windowState: PropTypes.string.isRequired,
+  setWindowState: PropTypes.func.isRequired
+};
+
+Window.defaultProps = {
+  windowState: 'normal'
+};
